@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            let currentValue=""
+            $(document).ready(function(){
+                $("td").click(function(){
+                    let value=$(this).text()
+                    console.log(value)
+                    if(value==="="){
+                        $("#result").text(eval(currentValue))
+                    }
+                    else if(value=="C"){
+                        currentValue=""
+                        $("#result").text("")
+                    }  
+                    else
+                        currentValue+=value
+                    $("#display").text(currentValue)
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div style="width:100%;height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="display: flex;">Display:<div id="display"></div></div>
+            <table>
+                <tr>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer" >9</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">8</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">7</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">+</td>
+                </tr>
+                <tr>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">6</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">5</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">4</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">-</td>
+                </tr>
+                <tr>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">3</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">2</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">1</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">*</td>
+                </tr>
+                <tr>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">C</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">0</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">/</td>
+                    <td style="padding:3px;border:1px solid black;border-radius:2px;cursor:pointer">=</td>
+                </tr>
+            </table>
+            <div style="display: flex;">Result:<div id="result"></div> </div>
+        </div>
+    </body>
+</html>

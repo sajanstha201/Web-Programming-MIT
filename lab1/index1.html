@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#left-button").click(function(){
+                    console.log('sajan')
+                    $("#table").css({
+                        left:$("#table").position().left-100+"px"
+                    })
+                    
+                })
+            })
+            $(document).ready(function(){
+                $("#right-button").click(function(){
+                    console.log("right clicked")
+                    $("#table").css({
+                        left:$("#table").position().left+100+"px"
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body style="width:100%;height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div style="width:100%;height:500px;display:flex;align-items:center;justify-content:center;position:relative"id="table" >
+            <table style="border: 1px solid black;" >
+                <tr style="background-color: blue">
+                    <td style="border:1px solid black">sajan</td>
+                    <td style="border:1px solid black">shrestha</td>
+                    <td style="border:1px solid black">cse</td>
+                </tr>
+                <tr style="background-color: red;">
+                    <td style="border:1px solid black">deep</td>
+                    <td style="border:1px solid black">khadka</td>
+                    <td style="border:1px solid black">cse</td>
+                </tr>
+                <tr style="background-color: green;">
+                    <td style="border:1px solid black">devraj</td>
+                    <td style="border:1px solid black">silwal</td>
+                    <td style="border:1px solid black">cse</td>
+                </tr>
+            </table>
+            <img src="img.png" style="width: 100px;height:100px" id="img"/>
+        </div>
+        <div style="display: flex;">
+        <div style="border: 1px solid black; padding:2px;margin:2px; border-radius:2px;background-color:greenyellow;cursor:pointer" id="left-button"><</div>
+        <div style="border: 1px solid black; padding:2px;margin:2px; border-radius:2px;background-color:greenyellow;cursor:pointer" id="right-button">></div>
+        </div>
+    </body>
+</html>

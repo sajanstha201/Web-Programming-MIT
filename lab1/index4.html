@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#produce").click(function(){
+                    let n_mobile=parseInt($('input[name="mobile"]').is(':checked')?$("#nmobile").val():0)
+                    let n_laptop=parseInt($('input[name="laptop"]').is(':checked')?$("#nlaptop").val():0)
+                    let productSelected=$("#product").val()
+                    let total=0;
+                    if(productSelected=='HP')
+                    total=n_mobile*100+n_laptop*1000
+                    else if(productSelected=='Nokia')
+                        total=n_mobile*50+n_laptop*500
+                    else if(productSelected=='Samsung')
+                        total=n_mobile*300+n_laptop*1500
+                    else if(productSelected=='Moorola')
+                        total=n_mobile*10+n_laptop*100
+                    else
+                        total=n_mobile*1000+n_laptop*100000
+                    alert("The total price is "+total)
+                })
+            })
+        </script>
+    </head>
+    <body style="display: flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:500px">
+        <select id="product">
+            <option>HP</option>
+            <option>Nokia</option>
+            <option>Samsung</option>
+            <option>Moorola</option>
+            <option>Apple</option>
+        </select>
+        <br>
+        <div>
+            <input type="checkbox" name="mobile"/>Mobile,
+            <label>Quantity: <input type="text" id="nmobile"/></label>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" name="laptop"/>Laptop,
+            <label>Quantity: <input type="text" id="nlaptop"/></label>
+        </div>
+        <br>
+        <div id="produce" style="border: 2px solid black; background-color:gray;border-radius:2px;cursor:pointer;padding:5px;color:white">Produce Bill</div>
+
+    </body>
+</html>

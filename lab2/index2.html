@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            class Employee{
+                constructor(name,company){
+                    this.name=name
+                    this.company=company
+                }
+            }
+            let employee_data=[]
+            function updateTable(){
+                $("#student-table").html("<tr><td>Name</td><td>Company</td> <td>Updation</td><td>Deletion</td></tr>")
+                employee_data.forEach((e,i)=>{
+                    var newEmployee='<tr id='+i+'row data-index='+i+'><td>'+e.name+'</td><td>'+e.company+'</td>'+
+                        '<td><div id="update-button" class="button" data-index='+i+'>Update</div></td>'+
+                        '<td><div id="delete-button" class="button" data-index='+i+'> Delete</div></td>'+
+                        '</td></tr>'
+                    $("#student-table").append(newEmployee)
+                })
+            }
+            $(document).ready(function(){
+                $("#add-employee").click(function(){
+                    if($("#name").val()=="")
+                        alert("Name Field is Empty")
+                    else if($("#company").val()=="")
+                        alert("Company Field is Empty")
+                    else{
+                        let new_emp=new Employee($("#name").val(),$("#company").val())
+                        employee_data.push(new_emp)
+                    }
+                    updateTable()
+                })
+            })
+            $(document).on('click','#delete-button',function(){
+                let index=$(this).data('index')
+                employee_data.splice(index,1)
+                updateTable()
+            })
+            $(document).on('click','#update-button',function(){
+                let index=$(this).data('index')
+                $("#update-div").css({display:'flex'})
+                $("#update-name").val(employee_data[index].name)
+                $("#update-company").val(employee_data[index].company)
+                $("#save-button").click(function(){
+                    console.log("sajan shrestha")
+                    employee_data[index].name=$("#update-name").val()
+                    employee_data[index].company=$("#update-company").val()
+                    updateTable()
+                    $("#update-div").css({display:'none'})
+                })
+
+            })
+        </script>
+        <link rel="stylesheet" type="text/css" href="styles1.css">
+    </head>
+    <body>
+        <div style="display: flex;width:100%">
+            <div style="width:50%;">
+                <div style="display: grid;grid-template-columns:repeat(2,100px);grid-template-rows:repeat(2,30px)" id="create-new-div">
+                    <label>Name</label>
+                    <input type="text" id="name" class="text-box"/>
+                    <label>Company</label>
+                    <input type="text" id="company" class="text-box"/>
+                </div>
+                <br>
+                <div id="add-employee" class="button">ADD NEW EMPLOYEE</div>
+            </div>
+            <div style="width:50%;display:flex;flex-direction:column;display:center;justify-content:center" >
+                <h1>Student Data</h1>
+                <div id="student-detail">
+                    <table id="student-table">
+                        <tr>
+                            <td>Name</td>
+                            <td>Company</td>
+                            <td>Updation</td>
+                            <td>Deletion</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="display:none;flex-direction:column" id="update-div">
+                    <h2>Updation</h2>
+                    <label>Updated Name</label>
+                    <input type="text" class="text-box" id="update-name">
+                    <br>
+                    <label>Updated Company</label>
+                    <input type="text" class="text-box" id="update-company">
+                    <br>
+                    <div class="button" id="save-button">Save</div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>

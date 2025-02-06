@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Birthday Card</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#update").click(function(){
+                    let borderStyle=$('input[name="bs"]:checked').val()
+                    let border=''
+                    if(borderStyle=='Solid')
+                        border='2px solid'
+                    else if(borderStyle=='Double')
+                        border='4px double'
+                    else
+                        border=''
+
+                    console.log("1px " + border + " black")
+                    console.log($("#selectBg").val())
+                    $("#container").css({
+                        backgroundColor:$("#selectBg").val(),
+                        fontFamily:$("#selectFontFamily").val(),
+                        fontSize:$("#fontSize").val(),
+                        border:border + " black"
+                    })
+                    $("#text").text($("#input-text").val())
+                    $("#img").css({
+                        display:$('input[name="default_pic"]').is(':checked')?'block':'none'
+                    })
+                })
+            }
+            )
+        </script>
+    </head>
+    <body style="width: 100%;display:flex">
+        <div style="width: 50%;padding:10%">
+            <label>Choose the background color:</label>
+            <select style="width: 80%;" id="selectBg">
+                <option>blue</option>
+                <option>green</option>
+                <option>red</option>
+                <option>yellow</option>
+            </select>
+            <br>
+            <br>
+            <label>Choose the font:</label>
+            <br>
+            <select style="width: 80%;" id="selectFontFamily">
+                <option>Arial</option>
+                <option>Times New Roman</option>
+            </select>
+            <br><br>
+            <label>Specify a numeric font size</label>
+            <br>
+            <input style="width: 80%;" id="fontSize"/>
+            <br><br>
+            <label>Choose a border style</label><br>
+            <input type="radio" name="bs" value="None">None<br>
+            <input type="radio" name="bs" value="Double">Double<br>
+            <input type="radio" name="bs" value="Solid">Solid<br>
+            <br><br>
+            <input type="checkbox" name="default_pic"/>Add the Default Picture <br>
+            <br>
+            <label>Enter the greeting text below:</label>
+            <br>
+            <textarea style="width: 80%;" id="input-text">
+
+            </textarea>
+            <br>
+            <br>
+            <div style="padding:5px;border:1px solid black; background-color:gray;width:80px;display:flex;align-items:center;justify-content:center;cursor:pointer" id="update">Update</div>
+        </div>
+        <div style="width: 50%;padding:10%;">
+            <div style="border:1px solid black;display:flex;flex-direction:column;align-items:center;height:50%" id="container">
+                <div style="height: 50%;width:60%;display:flex;flex-direction:column;align-items:center;justify-content:center" id="text">
+                    slkfj
+                </div>
+                <img src="cake.png" style="width:60%;height:20%;display:none" id="img"/>
+            </div>
+
+        </div>
+    </body>
+</html>

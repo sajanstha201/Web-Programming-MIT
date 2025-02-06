@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="styles1.css">
+    </head>
+    <body >
+        <h1>Student BioData</h1>
+        <div style="width:60%">
+            <h1>Personnel Information</h1>
+            <hr>
+            <label>Name of Student</label>
+            <input type="text" id="student-name" class="text-box">
+            <br>
+            <label>Date of Birith</label>
+            <input type="date" id="dob">
+            <br>
+            <label>Gender</label>
+            <br>
+            <input type="radio" name="gender" value="Male"/>Male<br>
+            <input type="radio" name="gender" value="Female"/>Female<br>
+            <input type="radio" name="gender" value="Others"/>Others<br>
+            <label>Email</label>
+            <input type="email" id="email" class="text-box">
+        </div>
+        <div style="width:60%">
+            <h1>Educational Information</h1>
+            <hr>
+            <div style="display: grid;grid-template-columns:repeat(2,100px);grid-template-rows:repeat(3,40px)">
+                <label>Course Name</label>
+                <input type="text" id="course-name" class="text-box">
+                <label>College Name</label>
+                <input type="text" id="college-name" class="text-box">
+                <label>CGPA</label>
+                <input type="text" id="gpa" class="text-box"/>
+            </div>
+        </div>
+        <div style="width:60%">
+            <h1>Experience and Skills</h1>
+            <hr>
+            <div style="display: grid;grid-template-columns:repeat(2,200px);grid-template-rows:repeat(3,40px)">
+                <label>Role</label>
+                <input type="text" id="role1" class="text-box"/>
+                <label>Name of Company</label>
+                <input type="text" id="company1" class="text-box"/>
+                <label>Starting Date:</label>
+                <input type="date" id="starting-date"/>
+                <label>Ending Date: </label>
+                <input type="date" id="ending-date"/>
+                <label>Skills</label>
+                <input type="text" id="skills" class="text-box"/>
+            </div>
+            <div>
+                <hr>
+                <div class="button">Submit</div>
+            </div>
+        </div>
+    </body>
+</html>
