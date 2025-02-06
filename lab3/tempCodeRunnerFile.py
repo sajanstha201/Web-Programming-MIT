@@ -1,0 +1,1 @@
+file=open("/Users/sajanshrestha/Desktop/Web Programming/lab3/p3.txt","r")

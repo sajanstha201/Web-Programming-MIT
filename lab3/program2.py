@@ -7,6 +7,7 @@ class Student:
         self.address=address
         self.gender=gender
         self.marks=marks
+        self.per=sum(marks)/3
 student_list=[]
 for i in range(n):
     ob=Student(
@@ -26,12 +27,17 @@ for e in student_list:
            max=m
         if(min>m):
             min=m
-                 
+for e in student_list:
+    print("Name: ",e.name,"Percentage: ",e.per)      
 for e in student_list:
     for m in e.marks:
         if(m==max):
             print("Max Number Student:",e.name)
+for e in student_list:
+    for m in e.marks:
         if(m==min):
             print("Min Number Student:",e.name)
+for e in student_list:
+    for m in e.marks:
         if(m<10):
             print("Fail Student: ",e.name)
