@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script>
+            function handlePromotion() {
+                const today = new Date();
+                var date_joining = new Date(document.getElementById("doj").value); // Convert string to Date object
+
+                if (isNaN(date_joining)) {
+                    alert("Please select a valid Date of Joining!");
+                    return;
+                }
+
+                // Calculate difference in years
+                const diff = today - date_joining;
+                const years = diff / (1000 * 60 * 60 * 24 * 365.25); // Convert milliseconds to years
+
+                // Update the text based on eligibility
+                document.getElementById("yes-no-text").innerHTML = years >= 5 ? "YES" : "NO";
+            }
+        </script>
+    </head>
+    <body style="display: flex; flex-direction: column; gap: 10px;">
+        <label for="dropdown">Choose your ID:</label>
+        <select id="dropdown">
+            <option value="sajan">12345</option>
+            <option value="deep">12346</option>
+            <option value="devraj">12347</option>
+        </select>
+
+        <label>Date of Joining:</label>
+        <input type="date" id="doj">
+
+        <button onclick="handlePromotion()">Am I eligible for Promotion?</button>
+
+        <span id="yes-no-text" style="font-weight: bold;"></span>
+    </body>
+</html>
