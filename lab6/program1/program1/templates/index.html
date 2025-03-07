@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script>
+            function submitData(){
+                const model = document.querySelector("select").value;
+                const modelName = document.getElementById("model_name").value;
+
+                // Redirect to display.html with query parameters
+                window.location.href = `display?model=${encodeURIComponent(model)}&model_name=${encodeURIComponent(modelName)}`;
+            }
+        </script>
+    </head>
+    <body>
+        <label>Select the car model</label>
+        <select>
+            <option>BMW</option>
+            <option>TATA</option>
+        </select>
+        <br>
+        <label>Car model name:</label>
+        <input type="text" id="model_name" />
+        <br>
+        <button onclick="submitData()">Submit</button>
+    </body>
+</html>

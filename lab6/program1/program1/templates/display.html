@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <h1>Car Details</h1>
+        <p id="carModel"></p>
+        <p id="carModelName"></p>
+
+        <script>
+            // Get URL parameters
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById("carModel").textContent = "Car Model: " + params.get("model");
+            document.getElementById("carModelName").textContent = "Car Model Name: " + params.get("model_name");
+        </script>
+    </body>
+</html>
