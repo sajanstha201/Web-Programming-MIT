@@ -18,7 +18,7 @@ def addStudent(request):
             serializers.save()
             return JsonResponse({'status':'sucess'},status=status.HTTP_200_OK)
         return JsonResponse({'status':'not valid data'},status=status.HTTP_400_BAD_REQUEST)
-    return JsonResponse({'status':'not post method'},status=status.HTTP_404_NOT_FOUND)
+    return JsonResponse({'status':'not post method'},status=status.HTTP_400_BAD_REQUEST)
 
 def getStudent(request):
     if(request.method=='GET'):

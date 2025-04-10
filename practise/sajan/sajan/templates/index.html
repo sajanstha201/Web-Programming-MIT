@@ -1,0 +1,38 @@
+<html>
+    <script>
+        function postData(){
+            fetch('http://127.0.0.1:8000/',
+            {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({'name':'sajan shrestha','roll':23})
+        }
+        ).then(response=>response.json())
+        .then(data=>{console.log('success')})
+        }
+        function getData(){
+            fetch('http://127.0.0.1:8000/get/',{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            }).then(response=>response.json())
+            .then(data=>{
+                console.log(data)
+                data.map(e=>{
+                    document.getElementById('data').innerHTML+=e.name+' '
+                })
+                
+            })
+        }
+    </script>
+    <body>
+        <h1>Hello my name is sajan shrestha</h1>
+        <button onclick='postData()'>clicle me</button>
+        <h1>data</h1>
+        <button onclick='getData()'>getData</button>
+        <div id='data'>data</div>
+    </body>
+</html>

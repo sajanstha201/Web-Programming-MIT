@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script>
+            function getData(){
+                fetch('http://127.0.0.1:8000/get/',{
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                }).then(response=>response.json())
+                .then(response=>{
+                    document.getElementById('d_table').innerHTML="<tr><td>URL</td><td>Number of visted</td><td>Number of Likes</td><td>Likes</td></tr>"
+                    response.forEach(e=>{
+                        document.getElementById('d_table').innerHTML+=`<tr style="display: flex;">
+                        <td><a href=${e.url} onclick='clickURL(${e.id})'>${e.url}<a></td>
+                        <td>${e.num_visited}</td><td>${e.num_like}</td>
+                        <span><button onclick='clickLike(${e.id})'>Like button</button></span></tr>`
+                    })
+                    console.log(response)
+                    
+                })
+                
+            }
+            getData()
+            function clickURL(id){
+                fetch('http://127.0.0.1:8000/url/',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({'id':id})
+                }).then(response=>response.json({'id':id}))
+                .then(response=>{
+                    window.location.reload();
+                })
+            }
+            function clickLike(id){
+                fetch('http://127.0.0.1:8000/like/',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({'id':id})
+                }).then(response=>response.json())
+                .then(response=>{
+                    window.location.reload();
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <table id='d_table'>
+        </table>
+
+    </body>
+    </html>
