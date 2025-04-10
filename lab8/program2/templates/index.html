@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <script>
+            function addData(){
+                console.log("dalsfjalsd")
+                att=[["person_name","name"],["companry_name","cname"],["salary","salary"],["city","city"],["street","street"]]
+                data={}
+                att.forEach((e,i)=>{
+                    console.log(e,i)
+                    data[e[0]]=document.getElementById(e[1]).value
+                })
+                fetch('http://127.0.0.1:8000/add/',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify(data)
+                }).then(response=>response.json())
+                .then(response=>{
+                    console.log(response)
+                    alert('Added Successfully')
+                })
+            }
+            function getData(){
+                data={
+                    'company':document.getElementById('s_cname').value,
+                    'city':document.getElementById('s_city').value
+                }
+                fetch('http://127.0.0.1:8000/get/',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify(data)
+                }).then(response=>response.json())
+                .then(response=>{
+                    data=response
+                    data.forEach(e=>{
+                        document.getElementById('info').innerHTML+=`<td>${e.person_name}</td`
+                    })
+                    console.log(response)
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Adding</h1>
+        <input id='name' placeholder='Name'>
+        <input id='cname' placeholder='Company Name'/>
+        <input id='salary' placeholder='Salary'/>
+        <input id='city' placeholder='City'/>
+        <input id='street' placeholder='Street'/>
+        <button onclick='addData()'>Submit</button>
+        <br>
+        <br>
+        <h1>Searching</h1>
+        <br>
+        <input id='s_cname' placeholder='Company Name'/>
+        <input id='s_city' placeholder='City'/>
+        <button onclick='getData()'>Search</button>
+        <br>
+        <table id='info'>
+            <tr><td>Name</td></tr>
+        </table>
+    </body>
+    </html>
